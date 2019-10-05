@@ -25,80 +25,80 @@ using namespace Navio;
 
 std::unique_ptr <RCOutput> get_rcout()
 {
-    if (get_navio_version() == NAVIO2)
-    {
-        auto ptr = std::unique_ptr <RCOutput>{ new RCOutput_Navio2() };
-        return ptr;
-    } else
-    {
-        auto ptr = std::unique_ptr <RCOutput>{ new RCOutput_Navio() };
-        return ptr;
-    }
+	if (get_navio_version() == NAVIO2)
+	{
+		auto ptr = std::unique_ptr <RCOutput>{ new RCOutput_Navio2() };
+		return ptr;
+	} else
+	{
+		auto ptr = std::unique_ptr <RCOutput>{ new RCOutput_Navio() };
+		return ptr;
+	}
 
 }
 
 int main(int argc, char *argv[])
 {
-    //auto pwm = get_rcout();
+	//auto pwm = get_rcout();
 
-    if (check_apm()) {
-        return 1;
-    }
+	if (check_apm()) {
+		return 1;
+	}
 
-    if (getuid()) {
-        fprintf(stderr, "Not root. Please launch like this: sudo %s\n", argv[0]);
-    }
+	if (getuid()) {
+		fprintf(stderr, "Not root. Please launch like this: sudo %s\n", argv[0]);
+	}
 /*
-    if ( !(pwm->initialize(PWM_OUTPUT)) ) {
-        return 1;
-    }
-        
+	if ( !(pwm->initialize(PWM_OUTPUT)) ) {
+		return 1;
+	}
+		
 	pwm->set_frequency(PWM_OUTPUT, 50);
 
 	if ( !(pwm->enable(PWM_OUTPUT)) ) {
-	    return 1;
+		return 1;
 	}
 
-    pwm->set_duty_cycle(PWM_OUTPUT, SERVO_MIN);
-    printf("Pwm output PWM_OUTPUT set to min.\n");
-    printf("Press any key to set to high.\n");
-    getchar();
-    pwm->set_duty_cycle(PWM_OUTPUT, SERVO_MAX);
+	pwm->set_duty_cycle(PWM_OUTPUT, SERVO_MIN);
+	printf("Pwm output PWM_OUTPUT set to min.\n");
+	printf("Press any key to set to high.\n");
+	getchar();
+	pwm->set_duty_cycle(PWM_OUTPUT, SERVO_MAX);
 
-    printf("\nPress any key to set to min.\n");
-    getchar();
-    pwm->set_duty_cycle(PWM_OUTPUT, SERVO_MIN);
+	printf("\nPress any key to set to min.\n");
+	getchar();
+	pwm->set_duty_cycle(PWM_OUTPUT, SERVO_MIN);
 
-    printf("\nPress any key to cycle between low and high.\n");
-    getchar();
+	printf("\nPress any key to cycle between low and high.\n");
+	getchar();
 */
-    EscInterface myEsc(PWM_OUTPUT);
-    myEsc.start();
+	EscInterface myEsc(PWM_OUTPUT);
+	myEsc.start();
 
-    int width = 1000;
-    int percentage = 0;
+	int width = 1000;
+	int percentage = 0;
 
-    while (true) {
+	while (true) {
 
-        myEsc.setPercentage(percentage);
-        percentage = (percentage + 10) % 100;
-        sleep(2);
+		myEsc.setPercentage(percentage);
+		percentage = (percentage + 10) % 100;
+		sleep(2);
 
-        /*
-        pwm->set_duty_cycle(PWM_OUTPUT, width);
-        
-        //width += 100;
-        if (width == 2000) {
-            width = 1000;
-        } else {
-            width = 2000;
-        }
+		/*
+		pwm->set_duty_cycle(PWM_OUTPUT, width);
+		
+		//width += 100;
+		if (width == 2000) {
+			width = 1000;
+		} else {
+			width = 2000;
+		}
 
-        usleep(19000);
-        */
+		usleep(19000);
+		*/
 
 
-    }
+	}
 
-    return 0;
+	return 0;
 }

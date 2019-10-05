@@ -18,20 +18,20 @@ struct imuData
 {
 	int _sequenceCount;
 	float ax, ay, az;
-    float gx, gy, gz;
-    float mx, my, mz;
-    imuData() {
-    	_sequenceCount = 0;
-    	ax = ay = az = 0;
-    	gx = gy = gz = 0;
-    	mx = my = mz = 0;
-    }
-    int sequenceCount() {
-    	return this->_sequenceCount;
-    }
-    void incrementSequence() {
-    	this->_sequenceCount = (this->_sequenceCount + 1) % (INT_MAX - 1);
-    }
+	float gx, gy, gz;
+	float mx, my, mz;
+	imuData() {
+		_sequenceCount = 0;
+		ax = ay = az = 0;
+		gx = gy = gz = 0;
+		mx = my = mz = 0;
+	}
+	int sequenceCount() {
+		return this->_sequenceCount;
+	}
+	void incrementSequence() {
+		this->_sequenceCount = (this->_sequenceCount + 1) % (INT_MAX - 1);
+	}
 };
 
 struct barometerData
@@ -43,8 +43,8 @@ struct barometerData
 		temp = pressure = 0;
 	}
 	void incrementSequence() {
-    	this->sequenceCount = (this->sequenceCount + 1) % (INT_MAX - 1);
-    }
+		this->sequenceCount = (this->sequenceCount + 1) % (INT_MAX - 1);
+	}
 };
 
 struct shmSensorStruct

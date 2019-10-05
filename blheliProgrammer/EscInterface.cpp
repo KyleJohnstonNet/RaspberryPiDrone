@@ -16,64 +16,64 @@ using namespace std;
 
 bool EscInterface::init() {
 	int err;
-    err = write_file("/sys/class/pwm/pwmchip0/export", "%u", this->channel);
-    if (err >= 0 || err == -EBUSY)
-    {
-        return true;
-    }
-    else 
-    {
-        printf("Can't init channel %u\n", this->channel);
-        return false;
-    }
-    return true;
+	err = write_file("/sys/class/pwm/pwmchip0/export", "%u", this->channel);
+	if (err >= 0 || err == -EBUSY)
+	{
+		return true;
+	}
+	else 
+	{
+		printf("Can't init channel %u\n", this->channel);
+		return false;
+	}
+	return true;
 }
 
 bool EscInterface::enable() {
 	char path[60] = "/sys/class/pwm/pwmchip0";
-    char path_ch[20];
-    sprintf(path_ch, "/pwm%u/enable", this->channel);
-    strcat(path, path_ch);
-    
-    if (write_file(path, "1") < 0)
-    {
-        printf("Can't enable channel %u\n", this->channel);
-        return false;
-    }
-    return true;
+	char path_ch[20];
+	sprintf(path_ch, "/pwm%u/enable", this->channel);
+	strcat(path, path_ch);
+	
+	if (write_file(path, "1") < 0)
+	{
+		printf("Can't enable channel %u\n", this->channel);
+		return false;
+	}
+	return true;
 }
 
 bool EscInterface::setFrequency(unsigned int freq) {
 	int period_ns;
-    char path[60] = "/sys/class/pwm/pwmchip0";
-    char path_ch[20];
-    sprintf(path_ch, "/pwm%u/period", this->channel);
-    strcat(path, path_ch);
+	char path[60] = "/sys/class/pwm/pwmchip0";
+	char path_ch[20];
+	sprintf(path_ch, "/pwm%u/period", this->channel);
+	strcat(path, path_ch);
 
-    period_ns = 1e9 / freq;
-    if (write_file(path, "%u", period_ns) < 0)
-    {
-        printf("Can't set period to channel %u\n", this->channel);
-        return false;
-    }
-    return true;
+	period_ns = 1e9 / freq;
+	if (write_file(path, "%u", period_ns) < 0)
+	{
+		printf("Can't set period to channel %u\n", this->channel);
+		return false;
+	}
+	return true;
 
 }
 
 bool EscInterface::setPulseWidth() {
 	int period_ns;
 	char path[60] = "/sys/class/pwm/pwmchip0";
-    char path_ch[20];
-    sprintf(path_ch, "/pwm%u/duty_cycle", this->channel);
-    strcat(path, path_ch);
+	char path_ch[20];
+	sprintf(path_ch, "/pwm%u/duty_cycle", this->channel);
+	strcat(path, path_ch);
 
-    period_ns = this->commandedWidth * 1e6;
-    if (write_file(path, "%u", period_ns) < 0)
-    {
-        printf("Can't set duty cycle to channel %u\n", this->channel);
-        return false;
-    }
-    return true;
+	period_ns = this->commandedWidth * 1e6;
+	if (write_file(path, "%u", period_ns) < 0)
+	{
+		printf("Can't set duty cycle to channel %u\n", this->channel);
+		return false;
+	}
+	return true;
 }
 
 void EscInterface::refreshOutput() {

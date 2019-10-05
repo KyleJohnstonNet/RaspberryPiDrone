@@ -1,9 +1,9 @@
 /*
 	Copyright 2019 Kyle Johnston
 
-    Vehicle Control calculates throttle percentages for each motor based on the vehicle's position
-    state read from State Shared Memory.  Throttle values are sent to Throttle Control using Motor
-    Output Shared Memory.
+	Vehicle Control calculates throttle percentages for each motor based on the vehicle's position
+	state read from State Shared Memory.  Throttle values are sent to Throttle Control using Motor
+	Output Shared Memory.
 */
 
 #include <iostream>
@@ -16,39 +16,39 @@
 
 struct MotorAxes
 {
-    float x;
-    float y;
-    MotorAxes() {
-        x = y =0;
-    }
-    float motorOne() {
-        if (x > 0) {
-            return x;
-        } else {
-            return 0;
-        }
-    }
-    float motorTwo() {
-        if (x < 0) {
-            return -x;
-        } else {
-            return 0;
-        }
-    }
-    float motorThree() {
-        if (y > 0) {
-            return y;
-        } else {
-            return 0;
-        }
-    }
-    float motorFour() {
-        if (y < 0) {
-            return -y;
-        } else {
-            return 0;
-        }
-    }
+	float x;
+	float y;
+	MotorAxes() {
+		x = y =0;
+	}
+	float motorOne() {
+		if (x > 0) {
+			return x;
+		} else {
+			return 0;
+		}
+	}
+	float motorTwo() {
+		if (x < 0) {
+			return -x;
+		} else {
+			return 0;
+		}
+	}
+	float motorThree() {
+		if (y > 0) {
+			return y;
+		} else {
+			return 0;
+		}
+	}
+	float motorFour() {
+		if (y < 0) {
+			return -y;
+		} else {
+			return 0;
+		}
+	}
 };
 
 struct throttleSettingsStruct
@@ -105,66 +105,66 @@ void VehicleFrameToMotorAxes(Acceleration* linearAccel, MotorAxes* MA) {
 int main(int argc, char const *argv[])
 {
 	char stateKeyPath[] = STATE_SHM_KEY;
-    key_t stateShmKey = ftok(stateKeyPath, 65);
-    int stateShmId = shmget(stateShmKey, sizeof(shmStateStruct), 0666|SHM_RDONLY);
-    shmStateStruct* stateSharedMemory = (shmStateStruct*) shmat(stateShmId, (void*)0, 0); 
+	key_t stateShmKey = ftok(stateKeyPath, 65);
+	int stateShmId = shmget(stateShmKey, sizeof(shmStateStruct), 0666|SHM_RDONLY);
+	shmStateStruct* stateSharedMemory = (shmStateStruct*) shmat(stateShmId, (void*)0, 0); 
 
-    char motorThrottleKeyPath[] = "/home/pi/motorOutputSharedMemory";
-    key_t motorThrottleShmKey = ftok(motorThrottleKeyPath, 65);
-    int motorThrottleShmId = shmget(motorThrottleShmKey, sizeof(shmMotorThrottleStruct), 0666|IPC_CREAT);
-    shmMotorThrottleStruct* motorThrottleSharedMemory = new (shmat(motorThrottleShmId, (void*)0, 0)) shmMotorThrottleStruct;
+	char motorThrottleKeyPath[] = "/home/pi/motorOutputSharedMemory";
+	key_t motorThrottleShmKey = ftok(motorThrottleKeyPath, 65);
+	int motorThrottleShmId = shmget(motorThrottleShmKey, sizeof(shmMotorThrottleStruct), 0666|IPC_CREAT);
+	shmMotorThrottleStruct* motorThrottleSharedMemory = new (shmat(motorThrottleShmId, (void*)0, 0)) shmMotorThrottleStruct;
 
-    int j = 0;
-    int k = 0;
+	int j = 0;
+	int k = 0;
 
-    MotorAxes motorOverlays;
-    throttleSettingsStruct throttleSettings;
+	MotorAxes motorOverlays;
+	throttleSettingsStruct throttleSettings;
 
-    throttleSettings.setOverlayPointer(&motorOverlays);
-    throttleSettings.setBaseThrottle(25);
+	throttleSettings.setOverlayPointer(&motorOverlays);
+	throttleSettings.setBaseThrottle(25);
 
-    while (true) {
+	while (true) {
 
-    	VehicleFrameToMotorAxes(&(stateSharedMemory->linearAccel), &motorOverlays); 
-    	throttleSettings.updateOverlays();
+		VehicleFrameToMotorAxes(&(stateSharedMemory->linearAccel), &motorOverlays); 
+		throttleSettings.updateOverlays();
 
-    	motorThrottleSharedMemory->motor[0] = throttleSettings.motorOne;
-    	motorThrottleSharedMemory->motor[1] = throttleSettings.motorTwo;
-    	motorThrottleSharedMemory->motor[2] = throttleSettings.motorThree;
-    	motorThrottleSharedMemory->motor[3] = throttleSettings.motorFour;
+		motorThrottleSharedMemory->motor[0] = throttleSettings.motorOne;
+		motorThrottleSharedMemory->motor[1] = throttleSettings.motorTwo;
+		motorThrottleSharedMemory->motor[2] = throttleSettings.motorThree;
+		motorThrottleSharedMemory->motor[3] = throttleSettings.motorFour;
 
-    	if (k % 1 == 0) {
-	    	/*printf(
-	            "Vehicle Liniear Acceleration: %+7.3f %+7.3f %+7.3f    ",
-	            stateSharedMemory->linearAccel.x,
-	            stateSharedMemory->linearAccel.y,
-	            stateSharedMemory->linearAccel.z
-	        );*/
-	    	/*printf(
-	            "Motor Overlays: %+7.3f %+7.3f %+7.3f %+7.3f \n",
-	            motorOverlays.motorOne(),
-	            motorOverlays.motorTwo(),
-	            motorOverlays.motorThree(),
-	            motorOverlays.motorFour()
-	        );*/
-	        printf("Motor Throttle Settings:\n          %03d %03d \n             X    \n          %03d %03d \n\n",
-	            throttleSettings.motorFour,
-	            throttleSettings.motorOne,
-	            throttleSettings.motorTwo,
-	            throttleSettings.motorThree
-	        );
-	    }
+		if (k % 1 == 0) {
+			/*printf(
+				"Vehicle Liniear Acceleration: %+7.3f %+7.3f %+7.3f	",
+				stateSharedMemory->linearAccel.x,
+				stateSharedMemory->linearAccel.y,
+				stateSharedMemory->linearAccel.z
+			);*/
+			/*printf(
+				"Motor Overlays: %+7.3f %+7.3f %+7.3f %+7.3f \n",
+				motorOverlays.motorOne(),
+				motorOverlays.motorTwo(),
+				motorOverlays.motorThree(),
+				motorOverlays.motorFour()
+			);*/
+			printf("Motor Throttle Settings:\n		  %03d %03d \n			 X	\n		  %03d %03d \n\n",
+				throttleSettings.motorFour,
+				throttleSettings.motorOne,
+				throttleSettings.motorTwo,
+				throttleSettings.motorThree
+			);
+		}
 
-    	k++;
-    	usleep(20000);
-    }
+		k++;
+		usleep(20000);
+	}
 
-    delete motorThrottleSharedMemory;
+	delete motorThrottleSharedMemory;
 
-    shmdt(motorThrottleSharedMemory);
-    shmdt(stateSharedMemory);
+	shmdt(motorThrottleSharedMemory);
+	shmdt(stateSharedMemory);
 
-    shmctl(motorThrottleShmId, IPC_RMID, NULL);
+	shmctl(motorThrottleShmId, IPC_RMID, NULL);
 
 	return 0;
 }
