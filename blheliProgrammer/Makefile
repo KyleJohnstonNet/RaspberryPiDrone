@@ -6,12 +6,12 @@ SRC=$(wildcard */*.cpp)
 OBJECTS = $(SRC:.cpp=.o) 
 
 %.o: %.cpp
-	$(CXX) -std=gnu++11 $(INCLUDES) *.cpp -L$(NAVIO) -lnavio -o $@ $< 
+	$(CXX) -std=-std=c++17 $(INCLUDES) *.cpp -L$(NAVIO) -lnavio -o $@ $< 
 
 all: $(OBJECTS)
 	$(MAKE) -C /home/pi/Code/Navio2/C++/Navio all
-	$(CXX) -std=gnu++11 $(INCLUDES) *.cpp -L$(NAVIO) -lnavio -lpthread -o $@ $< 
-	$(CXX) -std=gnu++11 $(INCLUDES) BlheliProgrammer.cpp -L$(NAVIO) -lnavio -o BlheliProgrammer
+	$(CXX) -std=c++17 $(INCLUDES) *.cpp -L$(NAVIO) -lnavio -lpthread -o $@ $< 
+	$(CXX) -std=c++17 $(INCLUDES) BlheliProgrammer.cpp -L$(NAVIO) -lnavio -o BlheliProgrammer
 
 clean:
 	rm -f BlheliProgrammer

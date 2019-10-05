@@ -15,7 +15,7 @@ SRC=$(wildcard */*.cpp)
 OBJECTS = $(SRC:.cpp=.o) 
 
 %.o: %.cpp
-	$(CXX) -std=gnu++11 $(INCLUDES) *.cpp  -o $@ $< 
+	$(CXX) -std=c++17 $(INCLUDES) *.cpp  -o $@ $< 
 
 all: $(OBJECTS)
 	rm -vf vehicleControl

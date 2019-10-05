@@ -16,7 +16,7 @@ SRC=$(wildcard */*.cpp)
 OBJECTS = $(SRC:.cpp=.o) 
 
 %.o: %.cpp
-	$(CXX) -std=gnu++11 $(INCLUDES) *.cpp $(LIBRARIES) -lnavio -o $@ $< 
+	$(CXX) -std=c++17 $(INCLUDES) *.cpp $(LIBRARIES) -lnavio -o $@ $< 
 
 all: $(OBJECTS)
 	rm -vf throttleControl
