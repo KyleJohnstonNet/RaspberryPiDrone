@@ -8,7 +8,6 @@
 
 #include <pthread.h>
 class EscInterface;
-using namespace std;
 
 class EscInterface
 {
@@ -23,7 +22,6 @@ class EscInterface
 	bool enable();
 	bool disable();
 	bool setFrequency(unsigned int);
-	bool setPulseWidth();
 	void refreshOutput();
 	static void refreshThreadMain(void* context);
 public:

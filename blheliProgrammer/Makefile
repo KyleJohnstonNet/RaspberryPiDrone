@@ -1,19 +1,27 @@
 CXX ?= g++
-NAVIO = /home/pi/Code/Navio2/C++/Navio
-INCLUDES = -I $(NAVIO) -I ../../*
+
+PROJECT      = /home/pi/RaspberryPiDrone
+NAVIO        = $(PROJECT)/Navio2/C++/Navio
+ESCINTERFACE = $(PROJECT)/EscInterface/
+
+INCLUDES = -I $(NAVIO) -I $(ESCINTERFACE)
+LINKER = -L $(NAVIO) -L $(ESCINTERFACE) -lnavio -lpthread
+
 
 SRC=$(wildcard */*.cpp)
 OBJECTS = $(SRC:.cpp=.o) 
 
 %.o: %.cpp
-	$(CXX) -std=c++17 $(INCLUDES) *.cpp -L$(NAVIO) -lnavio -o $@ $< 
+	$(CXX) -std=c++17 *.cpp $(INCLUDES)  $(LINKER) -lnavio -o $@ $< 
 
 all: $(OBJECTS)
 	$(MAKE) -C $(NAVIO) all
-	$(CXX) -std=c++17 *.cpp  $(INCLUDES) -L$(NAVIO) -lnavio -lpthread 
-	$(CXX) -std=c++17 BlheliProgrammer.cpp $(INCLUDES) -L$(NAVIO) -lnavio -o BlheliProgrammer
+	$(MAKE) -C $(ESCINTERFACE) all
+	# Hard coded to object file because I don't know how the linker works
+	$(CXX) -std=c++17 BlheliProgrammer.cpp $(INCLUDES) $(LINKER) ../EscInterface/EscInterface.o -o BlheliProgrammer
 
 clean:
+	$(MAKE) -C $(ESCINTERFACE) clean
 	rm -f BlheliProgrammer
 	rm -f *.o
 	rm -f *.out

@@ -3,28 +3,24 @@
 */
 
 #include <unistd.h>
-#include "Navio2/PWM.h"
-#include "Navio+/RCOutput_Navio.h"
-#include "Navio2/RCOutput_Navio2.h"
-#include <Navio2/Led_Navio2.h>
-#include <Navio+/Led_Navio.h>
 #include "Common/Util.h"
 #include <unistd.h>
 #include <memory>
 #include <iostream>
 #include <pthread.h>
 
-#include "EscInterface/EscInterface.h"
+#include "Navio2/PWM.h"
+#include "Navio+/RCOutput_Navio.h"
+#include "Navio2/RCOutput_Navio2.h"
+#include <Navio2/Led_Navio2.h>
+#include <Navio+/Led_Navio.h>
 
-//#define SERVO_MIN 1000 /*micro S*/
-//#define SERVO_MAX 2000 /*micro S*/
+#include "EscInterface.h"
 
 enum ServoLimits {
 	SERVO_MIN_MICROSEC = 1000,
 	SERVO_MAX_MICROSEC = 2000
 };
-
-using namespace Navio;
 
 std::unique_ptr <RCOutput> get_rcout()
 {
@@ -51,6 +47,8 @@ int main(int argc, char *argv[])
 
 	if (getuid()) {
 		fprintf(stderr, "Not root. Please launch like this: sudo %s\n", argv[0]);
+
+		return 1;
 	}
 /*
 	if ( !(pwm->initialize(pwm_output)) ) {

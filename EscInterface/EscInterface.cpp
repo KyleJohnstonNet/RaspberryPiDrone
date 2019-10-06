@@ -109,28 +109,6 @@ bool EscInterface::setFrequency(unsigned int freq) {
 	return true;
 }
 
-bool EscInterface::setPulseWidth() {
-	int period_ns;
-	char path[60] = "/sys/class/pwm/pwmchip0";
-	char path_ch[20];
-	sprintf(path_ch, "/pwm%u/duty_cycle", this->channel);
-	strcat(path, path_ch);
-
-	//printf("EscInterface: Set pulse width.\n");
-
-	period_ns = this->commandedWidth;
-
-	printf("EscInterface: Writting value %u to %s\n", period_ns, path);
-
-	if (write_file(path, "%u", period_ns) < 0)
-	{
-		this->isActive = false;
-		printf("Can't set duty cycle to channel %u\n", this->channel);
-		return false;
-	}
-	return true;
-}
-
 void EscInterface::refreshOutput() {
 	setPulseWidth();
 	usleep(19500);
@@ -140,7 +118,7 @@ void EscInterface::refreshOutput() {
 
 void EscInterface::refreshThreadMain(void* arg) {
 	EscInterface* pThis = static_cast<EscInterface*>(arg);
-	while (pThis->refreshContinue) {
+	while (pThis->isActive) {
 		pThis->refreshOutput();
 	}
 
@@ -168,7 +146,7 @@ EscInterface::~EscInterface() {
 }
 
 int EscInterface::start() {
-	this->refreshContinue = true;
+	this->isActive = true;
 	pthread_create(&refresherThread, NULL, (void* (*)(void*)) &refreshThreadMain, (void*) this);
 
 	return 0;
@@ -176,13 +154,7 @@ int EscInterface::start() {
 }
 
 int EscInterface::stop() {
-	this->refreshContinue = false;
-
-	return 0;
-}
-
-int EscInterface::setPercentage(int percentage) {
-	this->commandedWidth = (percentage / 100) * (maxPulseWidth - minPulseWidth);
+	this->isActive = false;
 
 	return 0;
 }
@@ -207,4 +179,26 @@ void EscInterface::setMaxPulseWidth(int x) {
 	this->maxPulseWidth = x;
 
 	return;
+}
+
+bool EscInterface::setPulseWidth() {
+	int period_ns;
+	char path[60] = "/sys/class/pwm/pwmchip0";
+	char path_ch[20];
+	sprintf(path_ch, "/pwm%u/duty_cycle", this->channel);
+	strcat(path, path_ch);
+
+	//printf("EscInterface: Set pulse width.\n");
+
+	period_ns = this->commandedWidth;
+
+	// printf("EscInterface: Writting value %u to %s\n", period_ns, path);
+
+	if (write_file(path, "%u", period_ns) < 0)
+	{
+		this->isActive = false;
+		printf("Can't set duty cycle to channel %u\n", this->channel);
+		return false;
+	}
+	return true;
 }
