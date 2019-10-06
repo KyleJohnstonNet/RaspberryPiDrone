@@ -3,6 +3,7 @@
 
 */
 
+#include <pthread.h> 
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -27,7 +28,7 @@ bool EscInterface::init() {
 	else 
 	{
 		this->isActive = false;
-		printf("EscInterface: Can't init channel %u\n", this->channel);
+		printf("Can't init channel %u. Error value: %i\n", this->channel, err);
 		return false;
 	}
 	return true;
@@ -106,7 +107,6 @@ bool EscInterface::setFrequency(unsigned int freq) {
 		return false;
 	}
 	return true;
-
 }
 
 bool EscInterface::setPulseWidth() {
@@ -131,9 +131,28 @@ bool EscInterface::setPulseWidth() {
 	return true;
 }
 
+void EscInterface::refreshOutput() {
+	setPulseWidth();
+	usleep(19500);
+
+	return;
+}
+
+void EscInterface::refreshThreadMain(void* arg) {
+	EscInterface* pThis = static_cast<EscInterface*>(arg);
+	while (pThis->refreshContinue) {
+		pThis->refreshOutput();
+	}
+
+	pthread_exit(0);
+
+	return;
+}
+
 EscInterface::EscInterface(unsigned int _channel) {
 	this->channel = _channel;
 	this->init();
+	this->enable();
 	this->setFrequency(50);
 	this->enable();
 	this->setPercentage(0);
@@ -141,9 +160,31 @@ EscInterface::EscInterface(unsigned int _channel) {
 	this->disable();
 	this->close();
 }
+
 EscInterface::~EscInterface() {
 	//this->disable();
 	//this->close();
+	this->stop();
+}
+
+int EscInterface::start() {
+	this->refreshContinue = true;
+	pthread_create(&refresherThread, NULL, (void* (*)(void*)) &refreshThreadMain, (void*) this);
+
+	return 0;
+
+}
+
+int EscInterface::stop() {
+	this->refreshContinue = false;
+
+	return 0;
+}
+
+int EscInterface::setPercentage(int percentage) {
+	this->commandedWidth = (percentage / 100) * (maxPulseWidth - minPulseWidth);
+
+	return 0;
 }
 
 int EscInterface::setPercentage(int percentage) {
