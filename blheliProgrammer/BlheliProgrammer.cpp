@@ -13,13 +13,16 @@
 #include <memory>
 #include <iostream>
 #include <pthread.h>
-#include "EscInterface.h"
 
-#define SERVO_MIN 1000 /*micro S*/
-#define SERVO_MAX 2000 /*micro S*/
+#include "EscInterface/EscInterface.h"
 
-#define PWM_OUTPUT 0
+//#define SERVO_MIN 1000 /*micro S*/
+//#define SERVO_MAX 2000 /*micro S*/
 
+enum ServoLimits {
+	SERVO_MIN_MICROSEC = 1000,
+	SERVO_MAX_MICROSEC = 2000
+};
 
 using namespace Navio;
 
@@ -40,6 +43,7 @@ std::unique_ptr <RCOutput> get_rcout()
 int main(int argc, char *argv[])
 {
 	//auto pwm = get_rcout();
+	const int pwm_output = 0;
 
 	if (check_apm()) {
 		return 1;
@@ -49,30 +53,30 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Not root. Please launch like this: sudo %s\n", argv[0]);
 	}
 /*
-	if ( !(pwm->initialize(PWM_OUTPUT)) ) {
+	if ( !(pwm->initialize(pwm_output)) ) {
 		return 1;
 	}
 		
-	pwm->set_frequency(PWM_OUTPUT, 50);
+	pwm->set_frequency(pwm_output, 50);
 
-	if ( !(pwm->enable(PWM_OUTPUT)) ) {
+	if ( !(pwm->enable(pwm_output)) ) {
 		return 1;
 	}
 
-	pwm->set_duty_cycle(PWM_OUTPUT, SERVO_MIN);
-	printf("Pwm output PWM_OUTPUT set to min.\n");
+	pwm->set_duty_cycle(pwm_output, SERVO_MIN_MICROSEC);
+	printf("Pwm output pwm_output set to min.\n");
 	printf("Press any key to set to high.\n");
 	getchar();
-	pwm->set_duty_cycle(PWM_OUTPUT, SERVO_MAX);
+	pwm->set_duty_cycle(pwm_output, SERVO_MAX_MICROSEC);
 
 	printf("\nPress any key to set to min.\n");
 	getchar();
-	pwm->set_duty_cycle(PWM_OUTPUT, SERVO_MIN);
+	pwm->set_duty_cycle(pwm_output, SERVO_MIN_MICROSEC);
 
 	printf("\nPress any key to cycle between low and high.\n");
 	getchar();
 */
-	EscInterface myEsc(PWM_OUTPUT);
+	EscInterface myEsc(pwm_output);
 	myEsc.start();
 
 	int width = 1000;
@@ -85,7 +89,7 @@ int main(int argc, char *argv[])
 		sleep(2);
 
 		/*
-		pwm->set_duty_cycle(PWM_OUTPUT, width);
+		pwm->set_duty_cycle(pwm_output, width);
 		
 		//width += 100;
 		if (width == 2000) {

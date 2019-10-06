@@ -23,7 +23,7 @@ bool EscInterface::init() {
 	}
 	else 
 	{
-		printf("Can't init channel %u\n", this->channel);
+		printf("Can't init channel %u. Error value: %i\n", this->channel, err);
 		return false;
 	}
 	return true;
@@ -77,17 +77,21 @@ bool EscInterface::setPulseWidth() {
 }
 
 void EscInterface::refreshOutput() {
-	while (this->refreshContinue) {
-		setPulseWidth();
-		usleep(19500);
+	setPulseWidth();
+	usleep(19500);
+
+	return;
+}
+
+void EscInterface::refreshThreadMain(void* arg) {
+	EscInterface* pThis = static_cast<EscInterface*>(arg);
+	while (pThis->refreshContinue) {
+		pThis->refreshOutput();
 	}
 
 	pthread_exit(0);
 
 	return;
-}
-static void refreshOutputPointer(void *context) {
-	 return ((EscInterface *)context)->refreshOutput();
 }
 
 EscInterface::EscInterface(unsigned int _channel) {
@@ -103,7 +107,7 @@ EscInterface::~EscInterface() {
 }
 int EscInterface::start() {
 	this->refreshContinue = true;
-	pthread_create(&refresherThread, NULL, EscInterface::refreshOutputPointer, &this);
+	pthread_create(&refresherThread, NULL, (void* (*)(void*)) &refreshThreadMain, (void*) this);
 
 	return 0;
 
