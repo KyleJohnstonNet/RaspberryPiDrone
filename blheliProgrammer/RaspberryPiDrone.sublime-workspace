@@ -1,0 +1,913 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"motor",
+				"motorOne"
+			],
+			[
+				"mot",
+				"motorOverlays"
+			],
+			[
+				"set",
+				"setBaseThrottle"
+			],
+			[
+				"throttle",
+				"throttleSettings"
+			],
+			[
+				"mo",
+				"motorOne"
+			],
+			[
+				"bas",
+				"baseThrottle"
+			],
+			[
+				"stat",
+				"stateSharedMemory"
+			],
+			[
+				"Moto",
+				"MotorAxes"
+			],
+			[
+				"Mo",
+				"MotorAxes"
+			],
+			[
+				"temp",
+				"tempImu"
+			],
+			[
+				"vehi",
+				"vehicleAccel"
+			],
+			[
+				"Acc",
+				"Acceleration"
+			],
+			[
+				"we",
+				"weightToNew"
+			],
+			[
+				"weig",
+				"weightToNew"
+			],
+			[
+				"weith",
+				"weightToExisting"
+			],
+			[
+				"N",
+				"NUMBER_OF_MOTORS"
+			],
+			[
+				"E",
+				"EscInterface"
+			],
+			[
+				"ma",
+				"main\tmain()"
+			],
+			[
+				"PWM",
+				"PWM_OUTPUT"
+			],
+			[
+				"larg",
+				"largestProduct"
+			],
+			[
+				"number",
+				"number"
+			],
+			[
+				"ad",
+				"adjecentDigits"
+			],
+			[
+				"scores",
+				"scoresDefault"
+			],
+			[
+				"level",
+				"levelsPresentDefault"
+			],
+			[
+				"event",
+				"eventsPresentDefault"
+			],
+			[
+				"heapS",
+				"heapSortedArray"
+			],
+			[
+				"heap",
+				"heapSortedArray"
+			],
+			[
+				"selec",
+				"selected"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"server",
+				"server-run"
+			],
+			[
+				"update",
+				"update-only"
+			],
+			[
+				"lett",
+				"lettersInOrder"
+			],
+			[
+				"le",
+				"letterRank"
+			],
+			[
+				"in",
+				"inOrder"
+			],
+			[
+				"swa",
+				"swapMade"
+			],
+			[
+				"quick",
+				"quickSortMain"
+			],
+			[
+				"partit",
+				"partitionIndex"
+			],
+			[
+				"the",
+				"theArray"
+			],
+			[
+				"swap",
+				"swapMade"
+			],
+			[
+				"new",
+				"newLength"
+			],
+			[
+				"pin",
+				"printf\tprintf …"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"p",
+				"printf\tprintf …"
+			],
+			[
+				"sort",
+				"sortedArray"
+			],
+			[
+				"size",
+				"sizeOfArray"
+			],
+			[
+				"for",
+				"for\tFor Loop"
+			],
+			[
+				"leng",
+				"lengthOfCleanString"
+			],
+			[
+				"w",
+				"wEnd"
+			],
+			[
+				"char",
+				"charArrayElement"
+			],
+			[
+				"clean",
+				"cleanString"
+			],
+			[
+				"lengthof",
+				"lengthOfCharArray"
+			],
+			[
+				"offs",
+				"offset"
+			],
+			[
+				"length",
+				"lengthOfSrcString"
+			],
+			[
+				"num",
+				"numWords"
+			],
+			[
+				"nav",
+				"navItems"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"Pro",
+				"ProcessQueue"
+			],
+			[
+				"Proc",
+				"Process"
+			],
+			[
+				"PRo",
+				"ProcessQueue"
+			],
+			[
+				"PRoce",
+				"ProcessQueue"
+			],
+			[
+				"Process",
+				"ProcessQueue"
+			],
+			[
+				"be",
+				"begin"
+			],
+			[
+				"LP",
+				"LPQ"
+			],
+			[
+				"PRoc",
+				"ProcessQueue"
+			],
+			[
+				"P",
+				"PQt"
+			],
+			[
+				"add",
+				"addProcess"
+			],
+			[
+				"_",
+				"_processes"
+			],
+			[
+				"PRocess",
+				"ProcessInDevice"
+			],
+			[
+				"_co",
+				"_core1"
+			],
+			[
+				"process",
+				"processQueue"
+			],
+			[
+				"Pros",
+				"ProcessQeue"
+			],
+			[
+				"n",
+				"numberOfProcesses"
+			],
+			[
+				"pro",
+				"processQueue"
+			],
+			[
+				"pub",
+				"push_back"
+			],
+			[
+				"In",
+				"Instruction"
+			],
+			[
+				"instru",
+				"instructions"
+			],
+			[
+				"pr",
+				"process"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"my",
+				"myReadFile"
+			],
+			[
+				"memory",
+				"memorySize"
+			],
+			[
+				"ha",
+				"hash_fn"
+			],
+			[
+				"sze",
+				"sizeOfArray"
+			],
+			[
+				"mem",
+				"memoryMultiples"
+			],
+			[
+				"pa",
+				"pageSize"
+			],
+			[
+				"ri",
+				"rightNode"
+			],
+			[
+				"left",
+				"leftRotate"
+			],
+			[
+				"right",
+				"rightRotate"
+			],
+			[
+				"balan",
+				"balanceFactor"
+			],
+			[
+				"ne",
+				"newIndex"
+			],
+			[
+				"matri",
+				"matrix"
+			],
+			[
+				"matrix",
+				"matrixSize"
+			],
+			[
+				"array",
+				"arrayA"
+			],
+			[
+				"wra",
+				"wrapper"
+			],
+			[
+				"arra",
+				"arraySizes"
+			],
+			[
+				"s",
+				"startEndFilter"
+			],
+			[
+				"disk",
+				"disksLeft"
+			],
+			[
+				"Linenu",
+				"LINENUMBER"
+			],
+			[
+				"numb",
+				"numberofRings"
+			],
+			[
+				"peg",
+				"pegName"
+			],
+			[
+				"de",
+				"debugPrint"
+			],
+			[
+				"dis",
+				"disksPerPeg"
+			],
+			[
+				"al",
+				"allowableMoves"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 470,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "BlheliProgrammer.cpp",
+			"settings":
+			{
+				"buffer_size": 1917,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/kylejohnston/Code/RaspberryPiDrone/EscInterface/EscInterface.cpp",
+			"settings":
+			{
+				"buffer_size": 4448,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 89.0,
+		"last_filter": "theme",
+		"selected_items":
+		[
+			[
+				"theme",
+				"UI: Select Color Scheme"
+			],
+			[
+				"word",
+				"Word Wrap: Toggle"
+			],
+			[
+				"Package Control: Inst",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"make",
+			"ls",
+			"gcc -h",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/kylejohnston/Code/RaspberryPiDrone",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/blheliProgrammer",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/EscInterface"
+	],
+	"file_history":
+	[
+		"/Users/kylejohnston/Code/RaspberryPiDrone/EscInterface/EscInterface.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/blheliProgrammer/EscInterface.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/blheliProgrammer/EscInterface.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/blheliProgrammer/Makefile",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/blheliProgrammer/BlheliProgrammer.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/vehicleControl/vehicleControl.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/throttleControl/throttleControl.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/sharedMemoryStructs/sharedMemoryStructs.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/readSensors/readSensors.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Utilities/ublox-spi-to-tcp/ublox-spi-to-tcp.c",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Utilities/3DIMU/3Dimu.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/README.md",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/setup.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/Servo.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/RCInput.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/navio/util.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/navio/ublox.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/navio/rcinput.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/navio/pwm.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/navio/ms5611.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/navio/mpu9250.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/navio/lsm9ds1.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/navio/leds.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/navio/adc.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/LED.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/GPS.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/build/lib.linux-armv7l-2.7/navio2/util.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/build/lib.linux-armv7l-2.7/navio2/ublox.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/build/lib.linux-armv7l-2.7/navio2/rcinput.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/build/lib.linux-armv7l-2.7/navio2/pwm.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/build/lib.linux-armv7l-2.7/navio2/ms5611.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/build/lib.linux-armv7l-2.7/navio2/mpu9250.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/build/lib.linux-armv7l-2.7/navio2/lsm9ds1.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/build/lib.linux-armv7l-2.7/navio2/leds.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/build/lib.linux-armv7l-2.7/navio2/adc.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/ADC.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/Python/AccelGyroMag.py",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/RGBled.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/RGBled.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/RCOutput_Navio2.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/RCOutput_Navio2.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/RCInput_Navio2.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/RCInput_Navio2.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/PWM.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/PWM.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/LSM9DS1.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/LSM9DS1.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/Led_Navio2.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/Led_Navio2.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/ADC_Navio2.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio2/ADC_Navio2.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/RCOutput_Navio.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/RCOutput_Navio.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/RCInput_Navio.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/RCInput_Navio.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/PCA9685.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/PCA9685.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/MB85RC256.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/MB85RC256.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/Led_Navio.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/Led_Navio.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/ADS1115.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/ADS1115.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/ADC_Navio.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Navio+/ADC_Navio.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/Util.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/Ublox.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/Ublox.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/SPIdev.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/RCOutput.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/RCInput.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/MS5611.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/MS5611.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/MPU9250.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/MPU9250.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/Led.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/InertialSensor.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/I2Cdev.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/I2Cdev.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/gpio.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/gpio.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Navio/Common/ADC.h",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/Servo/Servo.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/RCInput/RCInput.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/Multithread/threaded_baro.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/LED/LED.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/GPS/gps.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/FRAM/FRAM.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/Barometer/Barometer.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/AHRS/AHRS.hpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/AHRS/AHRS.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/ADC/ADC.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/AccelGyroMag/AccelGyroMag.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/LICENSE",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/determineState/determineState.cpp",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/determineState/Makefile",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/ADC/Makefile",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/RCInput/Makefile",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/Navio2/C++/Examples/Servo/Makefile",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/readSensors/Makefile",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/throttleControl/Makefile",
+		"/Users/kylejohnston/Code/RaspberryPiDrone/vehicleControl/Makefile",
+		"/Users/kylejohnston/piAlpha/Code/throttleControl/throttleControl.cpp",
+		"/Users/kylejohnston/piAlpha/Code/sharedMemoryStructs/sharedMemoryStructs.h",
+		"/Users/kylejohnston/piAlpha/Code/readSensors/readSensors.cpp",
+		"/Users/kylejohnston/piAlpha/Code/determineState/determineState.cpp",
+		"/Users/kylejohnston/piAlpha/Code/vehicleControl/vehicleControl.cpp",
+		"/Users/kylejohnston/Code/raspberrypi/linux/drivers/acpi/acpica/utownerid.c",
+		"/Users/kylejohnston/piAlpha/Code/throttleControl/Makefile",
+		"/Users/kylejohnston/piAlpha/Code/readSensors/Makefile",
+		"/Users/kylejohnston/piAlpha/Code/vehicleControl/Makefile",
+		"/Users/kylejohnston/piAlpha/Code/EscInterface/EscInterface.cpp",
+		"/Users/kylejohnston/piAlpha/Code/EscInterface/EscInterface.h",
+		"/Users/kylejohnston/piAlpha/Code/sharedMemoryStructs/untitled",
+		"/Users/kylejohnston/piAlpha/Code/throttleControl/main.cpp",
+		"/Users/kylejohnston/piAlpha/Code/updateThrottle/Makefile",
+		"/Users/kylejohnston/piAlpha/Code/updateThrottle/main.cpp",
+		"/Users/kylejohnston/piAlpha/Code/EscInterface/Makefile",
+		"/Users/kylejohnston/piAlpha/Code/blheliProgrammer/Makefile",
+		"/Users/kylejohnston/piAlpha/Code/blheliProgrammer/EscInterface.cpp",
+		"/Users/kylejohnston/piAlpha/Code/blheliProgrammer/EscInterface.h",
+		"/Users/kylejohnston/piAlpha/Code/blheliProgrammer/BlheliProgrammer.cpp",
+		"/Users/kylejohnston/piAlpha/Code/BlheliProgrammer/BlheliProgrammer.cpp",
+		"/Users/kylejohnston/Code/cFS Mk 1/cFE-6.5.0-OSS-release/setvars.sh",
+		"/Users/kylejohnston/Code/cFS Mk 1/cFE-6.5.0-OSS-release/build/arm/detail_doxy",
+		"/Users/kylejohnston/Code/cFS Mk 1/cFE-6.5.0-OSS-release/build/arm/cfe/cfe-config.mak",
+		"/Users/kylejohnston/Code/cFS Mk 1/cFE-6.5.0-OSS-release/psp/fsw/pc-linux/make/link-rules.mak",
+		"/Users/kylejohnston/Code/cFS Mk 1/cFE-6.5.0-OSS-release/psp/fsw/pc-linux/make/compiler-opts.mak"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			"<current file>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"PWM_OUTPUT",
+			"SERVO",
+			"enable"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"pwm_output"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 470,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								72
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "BlheliProgrammer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1917,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								312,
+								312
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 12.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/kylejohnston/Code/RaspberryPiDrone/EscInterface/EscInterface.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								296,
+								296
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 32.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/C++/C++ Single File.sublime-build",
+	"project": "RaspberryPiDrone.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"stoi",
+				"~/Desktop/Dropbox/College/Spring 2016/COSC 3360/Assignments/Assignment 1/Instruction.h"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 184.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

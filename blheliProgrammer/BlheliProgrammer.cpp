@@ -18,8 +18,8 @@
 #include "EscInterface.h"
 
 enum ServoLimits {
-	SERVO_MIN_MICROSEC = 1000,
-	SERVO_MAX_MICROSEC = 2000
+	SERVO_MIN_MICROSEC = 1000000,
+	SERVO_MAX_MICROSEC = 2000000
 };
 
 std::unique_ptr <RCOutput> get_rcout()
@@ -38,7 +38,6 @@ std::unique_ptr <RCOutput> get_rcout()
 
 int main(int argc, char *argv[])
 {
-	//auto pwm = get_rcout();
 	const int pwm_output = 0;
 
 	if (check_apm()) {
@@ -47,59 +46,48 @@ int main(int argc, char *argv[])
 
 	if (getuid()) {
 		fprintf(stderr, "Not root. Please launch like this: sudo %s\n", argv[0]);
-
-		return 1;
-	}
-/*
-	if ( !(pwm->initialize(pwm_output)) ) {
-		return 1;
-	}
-		
-	pwm->set_frequency(pwm_output, 50);
-
-	if ( !(pwm->enable(pwm_output)) ) {
 		return 1;
 	}
 
-	pwm->set_duty_cycle(pwm_output, SERVO_MIN_MICROSEC);
-	printf("Pwm output pwm_output set to min.\n");
-	printf("Press any key to set to high.\n");
-	getchar();
-	pwm->set_duty_cycle(pwm_output, SERVO_MAX_MICROSEC);
-
-	printf("\nPress any key to set to min.\n");
-	getchar();
-	pwm->set_duty_cycle(pwm_output, SERVO_MIN_MICROSEC);
-
-	printf("\nPress any key to cycle between low and high.\n");
-	getchar();
-*/
 	EscInterface myEsc(pwm_output);
 	myEsc.start();
 
-	int width = 1000;
+	myEsc.setMinPulseWidth(SERVO_MIN_MICROSEC);
+	myEsc.setMaxPulseWidth(SERVO_MAX_MICROSEC);
+
+
+	myEsc.setPercentage(0);
+	printf("Pwm output pwm_output set to min.\n");
+	printf("Press any key to begin arming sequence.\n");
+	getchar();
+
+	const int min_percentage = 40;
+	int max_percentage = 50;
+	for (int i = min_percentage; i < max_percentage; i++) {
+		myEsc.setPercentage(i);
+		usleep(1e6 / 2);
+	}
+	for (int i = max_percentage; i >= min_percentage; i--) {
+		myEsc.setPercentage(i);
+		usleep(1e6 / 2);
+	}
+	printf("Arming sequence complete.\n");
+	printf("Press any key to begin cycling throttle up and down\n");
+	getchar();
+
 	int percentage = 0;
-
 	while (true) {
-
-		myEsc.setPercentage(percentage);
-		percentage = (percentage + 10) % 100;
-		sleep(2);
-
-		/*
-		pwm->set_duty_cycle(pwm_output, width);
-		
-		//width += 100;
-		if (width == 2000) {
-			width = 1000;
-		} else {
-			width = 2000;
+		/*myEsc.setPercentage(percentage + min_percentage);
+		percentage = (percentage + 1) % (max_percentage - min_percentage);
+		usleep(1e6 / 3);*/
+		for (int i = min_percentage; i < max_percentage; i++) {
+			myEsc.setPercentage(i);
+			usleep(1e6 / 2);
 		}
-
-		usleep(19000);
-		*/
-
-
+		for (int i = max_percentage; i > min_percentage; i--) {
+			myEsc.setPercentage(i);
+			usleep(1e6 / 2);
+		}
 	}
 
 	return 0;
