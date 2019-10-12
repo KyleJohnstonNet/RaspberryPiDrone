@@ -21,7 +21,9 @@ all: $(OBJECTS)
 	$(CXX) -std=c++17 BlheliProgrammer.cpp $(INCLUDES) $(LINKER) ../EscInterface/EscInterface.o -o BlheliProgrammer
 
 clean:
-	$(MAKE) -C $(ESCINTERFACE) clean
 	rm -f BlheliProgrammer
 	rm -f *.o
 	rm -f *.out
+
+cleanall: clean
+	$(MAKE) -C $(ESCINTERFACE) clean

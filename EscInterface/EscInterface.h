@@ -23,15 +23,18 @@ class EscInterface
 	bool disable();
 	bool setFrequency(unsigned int);
 	void refreshOutput();
-	static void refreshThreadMain(void* context);
+	static void* refreshThreadMain(void* context);
 public:
+	EscInterface(unsigned int, unsigned int, unsigned int);
 	EscInterface(unsigned int);
 	~EscInterface();
-	int start();
-	int stop();
+	int startRefresherThread();
+	int stopRefresherThread();
+	int percentageToWidth(int);
 	int setPercentage(int);
 	void setMinPulseWidth(int);
 	void setMaxPulseWidth(int);
+	bool setPulseWidth(int);
 	bool setPulseWidth();
 };
 
