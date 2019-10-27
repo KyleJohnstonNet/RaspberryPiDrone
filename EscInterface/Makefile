@@ -6,7 +6,7 @@ SRC=$(wildcard */*.cpp)
 
 all:
 	$(MAKE) -C $(NAVIO) all
-	$(CXX) -c -ggdb $(INCLUDES) EscInterface.cpp -L$(NAVIO) -lnavio
+	$(CXX) -c -ggdb -std=c++17 $(INCLUDES) EscInterface.cpp -L$(NAVIO) -lnavio
 
 clean:
 	rm -vf *.o

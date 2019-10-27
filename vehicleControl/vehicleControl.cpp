@@ -14,6 +14,13 @@
 
 #include "sharedMemoryStructs.h"
 
+/*
+	Motor Numbers
+	    1   3
+	      X
+	    4   2
+*/ 
+
 struct MotorAxes
 {
 	float x;
@@ -102,7 +109,7 @@ void VehicleFrameToMotorAxes(Acceleration* linearAccel, MotorAxes* MA) {
 	return;
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
 	char stateKeyPath[] = STATE_SHM_KEY;
 	key_t stateShmKey = ftok(stateKeyPath, 65);
@@ -114,7 +121,6 @@ int main(int argc, char const *argv[])
 	int motorThrottleShmId = shmget(motorThrottleShmKey, sizeof(shmMotorThrottleStruct), 0666|IPC_CREAT);
 	shmMotorThrottleStruct* motorThrottleSharedMemory = new (shmat(motorThrottleShmId, (void*)0, 0)) shmMotorThrottleStruct;
 
-	int j = 0;
 	int k = 0;
 
 	MotorAxes motorOverlays;
@@ -147,7 +153,7 @@ int main(int argc, char const *argv[])
 				motorOverlays.motorThree(),
 				motorOverlays.motorFour()
 			);*/
-			printf("Motor Throttle Settings:\n		  %03d %03d \n			 X	\n		  %03d %03d \n\n",
+			printf("Motor Throttle Settings:\n        %03d %03d \n           X \n        %03d %03d \n\n",
 				throttleSettings.motorFour,
 				throttleSettings.motorOne,
 				throttleSettings.motorTwo,

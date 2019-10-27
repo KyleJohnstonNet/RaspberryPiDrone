@@ -15,10 +15,15 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
+#include <pthread.h> 
+
 #include "Common/Util.h"
 
 #include "sharedMemoryStructs.h"
 #include "EscInterface.h"
+
+const uint SERVO_MIN_MICROSEC = 1010000;
+const uint SERVO_MAX_MICROSEC = 1990000;
 
 int main(int argc, char const *argv[])
 {
@@ -28,6 +33,8 @@ int main(int argc, char const *argv[])
 	shmMotorThrottleStruct* motorThrottleSharedMemory = (shmMotorThrottleStruct*) shmat(motorThrottleShmId, (void*)0, 0);
 
 	std::vector<EscInterface*> Motors;
+
+	uint motorsOnPins[4] = {1, 3, 5, 7};
 
 	if (check_apm()) {
 		fprintf(stderr, "check_apm()returned true. We think that's bad. Aborting.\n");
@@ -40,14 +47,13 @@ int main(int argc, char const *argv[])
 	}
 
 	for (int i = 0; i < NUMBER_OF_MOTORS; i++) {
-	EscInterface* tmp;
 		printf("Creating motor %i\n", i);
-	tmp = new EscInterface(i);
 		Motors.push_back(nullptr);
-	Motors[i] = tmp;
+		Motors[i] = new EscInterface(motorsOnPins[i] - 1, SERVO_MIN_MICROSEC, SERVO_MAX_MICROSEC);
 		printf("Created Motor %i\n", i);
+		sleep(2);
 	}
-
+/*
 	for (int i = 0; i < NUMBER_OF_MOTORS; i++) {
 		Motors[i]->setPercentage(100);
 		Motors[i]->setPulseWidth();
@@ -59,12 +65,16 @@ int main(int argc, char const *argv[])
 		printf("Finished arming motor %i.\n", i);
 		sleep(1);
 	}
-
+*/
 	printf("Motors ready for use.\n");
+
+	for (int i = 0; i < NUMBER_OF_MOTORS; i++) {
+		Motors[i]->startRefresherThread();
+	}
+	sleep(3);
 
 	int throttle;
 
-	//for (int i = 0; i < 4; ++i) {
 	while (true) {
 		for (int j = 0; j < NUMBER_OF_MOTORS; j++)
 		{
@@ -72,7 +82,7 @@ int main(int argc, char const *argv[])
 			Motors[j]->setPercentage(throttle);
 			Motors[j]->setPulseWidth();
    	}
-		usleep(350000);
+		usleep(190000);
 		//printf(".\n");
 	}
 

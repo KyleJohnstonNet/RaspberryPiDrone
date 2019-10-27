@@ -1,3 +1,9 @@
+#
+#	Copyright 2019 Kyle Johnston
+#
+# 	Makefile for Blheli Programmer
+#
+
 CXX ?= g++
 
 PROJECT      = /home/pi/RaspberryPiDrone

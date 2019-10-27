@@ -18,10 +18,8 @@
 
 #include "EscInterface.h"
 
-enum ServoLimits {
-	SERVO_MIN_MICROSEC = 1010000,
-	SERVO_MAX_MICROSEC = 1990000
-};
+const uint SERVO_MIN_MICROSEC = 1010000;
+const uint SERVO_MAX_MICROSEC = 1990000;
 
 std::unique_ptr <RCOutput> get_rcout()
 {
@@ -68,7 +66,7 @@ int main(int argc, char *argv[])
 	sleep(3);
 
 	const int min_percentage = 0;
-	const int max_percentage = 30;
+	const int max_percentage = 100;
 	int i;
 	while (true) {
 		for (i = min_percentage; i <= max_percentage; i++) {

@@ -27,7 +27,7 @@ void subtractAccelerationAfromB(Acceleration* A, Acceleration* B) {
 	B->z -= A->z;
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
 
 	char sensorKeyPath[] = SENSOR_SHM_KEY;

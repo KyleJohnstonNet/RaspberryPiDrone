@@ -5,29 +5,29 @@
 #
 
 CXX ?= g++
-FLAGS = -Wall -W -ggdb
+FLAGS = -Wall -W -ggdb -std=c++17
+
 NAVIO = /home/pi/Code/Navio2/C++/Navio
-ESCINTERFACE = /home/pi/Code/EscInterface
+ESCINTERFACE = ../EscInterface
 SHAREDMEMORYSTRUCTS = /home/pi/Code/sharedMemoryStructs
+
 INCLUDES = -I $(ESCINTERFACE) -I $(NAVIO) -I $(SHAREDMEMORYSTRUCTS)
-LIBRARIES = -L $(NAVIO)
+LIBRARIES = -L $(NAVIO) -lnavio -pthread
 
 SRC=$(wildcard */*.cpp)
 OBJECTS = $(SRC:.cpp=.o) 
 
 %.o: %.cpp
-	$(CXX) -std=c++17 $(INCLUDES) *.cpp $(LIBRARIES) -lnavio -o $@ $< 
+	$(CXX) $(FLAGS) $(INCLUDES) *.cpp $(LIBRARIES)  -o $@ $< 
 
 all: $(OBJECTS)
 	rm -vf throttleControl
 	$(MAKE) -C $(NAVIO) all
 	$(MAKE) -C $(ESCINTERFACE) all
-	# $(CXX) $(FLAGS) -c $(INCLUDES) main.cpp
-	# $(CXX) $(FLAGS) $(INCLUDES) *.o $(LIBRARIES) -lnavio -o throttleControl
-	$(CXX) $(FLAGS) throttleControl.cpp $(ESCINTERFACE)/*.o $(INCLUDES) $(LIBRARIES) -lnavio -o throttleControl
+	$(CXX) $(FLAGS) throttleControl.cpp $(ESCINTERFACE)/EscInterface.o $(INCLUDES) $(LIBRARIES) -o throttleControl
 
 clean:
-	rm -vf updateThrottle
+	rm -vf throttleControl
 	rm -vf *.o
 
 cleanall: clean

@@ -15,7 +15,7 @@
 
 #include "sharedMemoryStructs.h"
 
-int main(int argc, char const *argv[])
+int main()
 {
 	LSM9DS1* LSM = new LSM9DS1();
 	LSM->initialize();

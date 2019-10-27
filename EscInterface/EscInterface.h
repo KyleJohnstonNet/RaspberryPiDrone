@@ -6,9 +6,6 @@
 #ifndef _EscInterface_H_
 #define _EscInterface_H_
 
-#include <pthread.h>
-class EscInterface;
-
 class EscInterface
 {
 	unsigned int channel = 0;
