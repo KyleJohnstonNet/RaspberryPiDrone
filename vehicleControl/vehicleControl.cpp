@@ -23,11 +23,9 @@
 
 struct MotorAxes
 {
-	float x;
-	float y;
-	MotorAxes() {
-		x = y =0;
-	}
+	float x=0;
+	float y=0;
+	
 	float motorOne() {
 		if (x > 0) {
 			return x;
@@ -69,31 +67,31 @@ struct throttleSettingsStruct
 		motorOne = motorTwo = motorThree = motorFour = 0;
 	}
 	void setBaseThrottle(int BT) {
-		this->baseThrottle = BT;
+		baseThrottle = BT;
 	}
 	void setOverlayPointer(MotorAxes* _MA) {
-		this->MA = _MA;
+		MA = _MA;
 	}
 	void updateOverlays() {
 		if (MA->motorOne() > 0.5) {
-			this->motorOne = this->baseThrottle + ( MA->motorOne() * this->degToThrottlePercentage);
+			motorOne = baseThrottle + ( MA->motorOne() * degToThrottlePercentage);
 		} else {
-			this->motorOne = this->baseThrottle;
+			motorOne = baseThrottle;
 		}
 		if (MA->motorTwo() > 0.5) {
-			this->motorTwo = this->baseThrottle + ( MA->motorTwo() * this->degToThrottlePercentage);
+			motorTwo = baseThrottle + ( MA->motorTwo() * degToThrottlePercentage);
 		} else {
-			this->motorTwo = this->baseThrottle;
+			motorTwo = baseThrottle;
 		}
 		if (MA->motorThree() > 0.5) {
-			this->motorThree = this->baseThrottle + ( MA->motorThree() * this->degToThrottlePercentage);
+			motorThree = baseThrottle + ( MA->motorThree() * degToThrottlePercentage);
 		} else {
-			this->motorThree = this->baseThrottle;
+			motorThree = baseThrottle;
 		}
 		if (MA->motorFour() > 0.5) {
-			this->motorFour = this->baseThrottle + ( MA->motorFour() * this->degToThrottlePercentage);
+			motorFour = baseThrottle + ( MA->motorFour() * degToThrottlePercentage);
 		} else {
-			this->motorFour = this->baseThrottle;
+			motorFour = baseThrottle;
 		}
 	}
 };

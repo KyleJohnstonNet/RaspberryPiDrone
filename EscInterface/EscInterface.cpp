@@ -18,17 +18,17 @@
 bool EscInterface::init() {
 	int err;
 
-	printf("EscInterface %u: Writting value %u to %s\n", this->channel, this->channel, "/sys/class/pwm/pwmchip0/export");
+	printf("EscInterface %u: Writting value %u to %s\n", channel, channel, "/sys/class/pwm/pwmchip0/export");
 	
-	err = write_file("/sys/class/pwm/pwmchip0/export", "%u", this->channel);
+	err = write_file("/sys/class/pwm/pwmchip0/export", "%u", channel);
 	if (err >= 0 || err == -EBUSY)
 	{
 		return true;
 	}
 	else 
 	{
-		this->isActive = false;
-		printf("Can't init channel %u. Error value: %i\n", this->channel, err);
+		isActive = false;
+		printf("Can't init channel %u. Error value: %i\n", channel, err);
 		return false;
 	}
 	return true;
@@ -38,7 +38,7 @@ bool EscInterface::close() {
 	//return false;
 	int err;
 	
-	printf("EscInterface %u: Writting value %u to %s\n", this->channel, this->channel, "/sys/class/pwm/pwmchip0/unexport");
+	printf("EscInterface %u: Writting value %u to %s\n", channel, channel, "/sys/class/pwm/pwmchip0/unexport");
 	
 	err = write_file("/sys/class/pwm/pwmchip0/unexport", "%u", 1);
 	if (err >= 0 || err == -EBUSY)
@@ -47,8 +47,8 @@ bool EscInterface::close() {
 	}
 	else 
 	{
-		this->isActive = false;
-		printf("EscInterface: Can't close channel %u\n", this->channel);
+		isActive = false;
+		printf("EscInterface: Can't close channel %u\n", channel);
 		return false;
 	}
 
@@ -60,15 +60,15 @@ bool EscInterface::close() {
 bool EscInterface::enable() {
 	char path[60] = "/sys/class/pwm/pwmchip0";
 	char path_ch[20];
-	sprintf(path_ch, "/pwm%u/enable", this->channel);
+	sprintf(path_ch, "/pwm%u/enable", channel);
 	strcat(path, path_ch);
 	
-	printf("EscInterface %u: Writting value %i to %s\n", this->channel, 1, path);
+	printf("EscInterface %u: Writting value %i to %s\n", channel, 1, path);
 
 	if (write_file(path, "1") < 0)
 	{
-		this->isActive = false;
-		printf("Can't enable channel %u\n", this->channel);
+		isActive = false;
+		printf("Can't enable channel %u\n", channel);
 		return false;
 	}
 	return true;
@@ -78,15 +78,15 @@ bool EscInterface::disable() {
 	//return false;
 	char path[60] = "/sys/class/pwm/pwmchip0";
 	char path_ch[20];
-	sprintf(path_ch, "/pwm%u/enable", this->channel);
+	sprintf(path_ch, "/pwm%u/enable", channel);
 	strcat(path, path_ch);
 	
-	printf("EscInterface %u: Writting value %i to %s\n", this->channel, 0, path);
+	printf("EscInterface %u: Writting value %i to %s\n", channel, 0, path);
 
 	if (write_file(path, "0") < 0)
 	{
-		this->isActive = false;
-		printf("Can't disable channel %u\n", this->channel);
+		isActive = false;
+		printf("Can't disable channel %u\n", channel);
 		return false;
 	}
 	return true;
@@ -96,17 +96,17 @@ bool EscInterface::setFrequency(unsigned int freq) {
 	int period_ns;
 	char path[60] = "/sys/class/pwm/pwmchip0";
 	char path_ch[20];
-	sprintf(path_ch, "/pwm%u/period", this->channel);
+	sprintf(path_ch, "/pwm%u/period", channel);
 	strcat(path, path_ch);
 
 	period_ns = 1e9 / freq;
 
-	printf("EscInterface %u: Writting value %u to %s\n", this->channel, period_ns, path);
+	printf("EscInterface %u: Writting value %u to %s\n", channel, period_ns, path);
 
 	if (write_file(path, "%u", period_ns) < 0)
 	{
-		this->isActive = false;
-		printf("Can't set period to channel %u\n", this->channel);
+		isActive = false;
+		printf("Can't set period to channel %u\n", channel);
 		return false;
 	}
 	return true;
@@ -157,7 +157,7 @@ EscInterface::~EscInterface() {
 }
 
 int EscInterface::startRefresherThread() {
-	this->isActive = true;
+	isActive = true;
 	pthread_create(&refresherThread, NULL, refreshThreadMain, (void*) this);
 
 	return 0;
@@ -165,7 +165,7 @@ int EscInterface::startRefresherThread() {
 }
 
 int EscInterface::stopRefresherThread() {
-	this->isActive = false;
+	isActive = false;
 	setPulseWidth( percentageToWidth(0) );
 
 	return 0;
@@ -179,36 +179,36 @@ inline int EscInterface::percentageToWidth(int percentage) {
 
 int EscInterface::setPercentage(int percentage) {
 	if (percentage >= 0 && percentage <= 100) {
-	   this->commandedWidth = percentageToWidth(percentage);
-	   printf("EscInterface %u: Commanded width updated to %i percent or %i ns\n", this->channel, percentage, this->commandedWidth);
+	   commandedWidth = percentageToWidth(percentage);
+	   printf("EscInterface %u: Commanded width updated to %i percent or %i ns\n", channel, percentage, commandedWidth);
 	} else {
-		printf("EscInterface %u: Ignorming commanded percentage of %i\n", this->channel, percentage);
+		printf("EscInterface %u: Ignorming commanded percentage of %i\n", channel, percentage);
 	}
 
 	return 0;
 }
 
 void EscInterface::setMinPulseWidth(int x) {
-	this->minPulseWidth = x;
+	minPulseWidth = x;
 
 	return;
 }
 
 void EscInterface::setMaxPulseWidth(int x) {
-	this->maxPulseWidth = x;
+	maxPulseWidth = x;
 
 	return;
 }
 
 bool EscInterface::setPulseWidth() {
-	return setPulseWidth(this->commandedWidth);
+	return setPulseWidth(commandedWidth);
 }
 
 bool EscInterface::setPulseWidth(int width) {
 	int period_ns;
 	char path[60] = "/sys/class/pwm/pwmchip0";
 	char path_ch[20];
-	sprintf(path_ch, "/pwm%u/duty_cycle", this->channel);
+	sprintf(path_ch, "/pwm%u/duty_cycle", channel);
 	strcat(path, path_ch);
 
 	//printf("EscInterface: Set pulse width.\n");
@@ -219,8 +219,8 @@ bool EscInterface::setPulseWidth(int width) {
 
 	if (write_file(path, "%u", period_ns) < 0)
 	{
-		this->isActive = false;
-		printf("EscInterface %u: Can't set duty cycle to channel %u\n", this->channel, this->channel);
+		isActive = false;
+		printf("EscInterface %u: Can't set duty cycle to channel %u\n", channel, channel);
 		return false;
 	}
 	return true;
