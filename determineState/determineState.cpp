@@ -11,6 +11,10 @@
 #include <unistd.h>
 #include <memory>
 
+#include <ctime>
+#include <ratio>
+#include <chrono>
+
 #include "Common/Util.h"
 
 #include "sharedMemoryStructs.h"
@@ -52,13 +56,13 @@ int main()
 	imuData tempImu;
 	
 	int lastCount = 0;
-	float avgSamples = 100;
-	float weightToExisting = (avgSamples - 1) / avgSamples;
-	float weightToNew = 1 / avgSamples;
+	constexpr float startingAvgSamples = 100;
+	//constexpr float startingWeightToExisting = (startingAvgSamples - 1) / startingAvgSamples;
+	//constexpr float startingWeightToNew = 1 / startingAvgSamples;
 
 	int sequenceCount = sensorSharedMemory->imu1.sequenceCount();
 
-	for (int i = sequenceCount; sequenceCount < (i + (int) avgSamples); NULL)
+	for (int i = sequenceCount; sequenceCount < (i + (int) startingAvgSamples); NULL)
 	{
 		if (sequenceCount > lastCount) {
 			//printf("Collected average sample %i\n", lastCount);
@@ -69,9 +73,9 @@ int main()
 		}
 		sequenceCount = sensorSharedMemory->imu1.sequenceCount();
 	}
-	runningAvgAcceleration.x /= avgSamples;
-	runningAvgAcceleration.y /= avgSamples;
-	runningAvgAcceleration.z /= avgSamples;
+	runningAvgAcceleration.x /= startingAvgSamples;
+	runningAvgAcceleration.y /= startingAvgSamples;
+	runningAvgAcceleration.z /= startingAvgSamples;
 
 	accelerationOfGravity = runningAvgAcceleration;
 
@@ -82,11 +86,33 @@ int main()
 		accelerationOfGravity.z
 	);
 
-	avgSamples = 10;
-	weightToExisting = (avgSamples - 1) / avgSamples;
-	weightToNew = 1 / avgSamples;
+	constexpr unsigned int desiredFrameRate = 1000;
+
+	constexpr float avgSamples = desiredFrameRate / 50;
+	constexpr float weightToExisting = (avgSamples - 1) / avgSamples;
+	constexpr float weightToNew = 1 / avgSamples;
+
+	std::chrono::high_resolution_clock::time_point t1;
+	std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> time_span;
+
+	unsigned long i =0;
+	unsigned int numberOfFrames = 1e7;
 
 	while (true) {
+		if (i % numberOfFrames == 0) {
+			t2 = std::chrono::high_resolution_clock::now();
+
+  			time_span = std::chrono::duration_cast< std::chrono::duration<double> >(t2 - t1);
+  			float frameTime = (time_span.count() / numberOfFrames) * 1e6;
+  			float frameRate = numberOfFrames / time_span.count();
+
+  			std::cout << i << ": It took " << time_span.count() << " seconds to complete " << numberOfFrames 
+  			          << " frames. (Expected 1.0 s) " << "Averaged " << frameTime << " us per frame, or "
+  			          << frameRate << " Hz.\n";
+			t1 = t2;
+		}
+
 		tempImu = sensorSharedMemory->imu1;
 
 		sequenceCount = tempImu.sequenceCount();
@@ -121,9 +147,9 @@ int main()
 		*/
 
 		//stateSharedMemory->linearAccel = tempAccel;
-
+	/*
 		if (sequenceCount % 50 == 0) {
-			/*printf(
+			printf(
 				"Sequence Count: %i  ",
 				tempImu.sequenceCount()
 			);
@@ -139,7 +165,7 @@ int main()
 				runningAvgAcceleration.y,
 				runningAvgAcceleration.z
 			);
-			/*printf(
+			printf(
 				"Gyr: %+8.3f %+8.3f %+8.3f  ",
 				sensorSharedMemory->imu1.gx,
 				sensorSharedMemory->imu1.gy,
@@ -150,10 +176,12 @@ int main()
 				sensorSharedMemory->imu1.mx,
 				sensorSharedMemory->imu1.my,
 				sensorSharedMemory->imu1.mz
-			);*/
+			);
 		}
+	*/
 
-		usleep(20000);
+		i++;
+		//usleep( (1e6 / desiredFrameRate) - 65);
 	}
 
 	delete stateSharedMemory;

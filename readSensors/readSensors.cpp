@@ -10,6 +10,10 @@
 #include <unistd.h>
 #include <memory>
 
+#include <ctime>
+#include <ratio>
+#include <chrono>
+
 #include "Navio2/LSM9DS1.h"
 #include "Common/Util.h"
 
@@ -35,7 +39,29 @@ int main()
 		return 1;
 	}
 
+	std::chrono::high_resolution_clock::time_point t1;
+	std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> time_span;
+
+	constexpr unsigned int desiredFrameRate = 1000;
+
+	unsigned int i =0;
+	unsigned int numberOfFrames = 10000;
+
 	while (true) {
+		if (i % numberOfFrames == 0) {
+			t2 = std::chrono::high_resolution_clock::now();
+
+  			time_span = std::chrono::duration_cast< std::chrono::duration<double> >(t2 - t1);
+  			float frameTime = (time_span.count() / numberOfFrames) * 1e6;
+  			float frameRate = numberOfFrames / time_span.count();
+
+  			std::cout << i << ": It took " << time_span.count() << " seconds to complete " << numberOfFrames 
+  			          << " frames. (Expected 1.0 s) " << "Averaged " << frameTime << " us per frame, or "
+  			          << frameRate << " Hz.\n";
+			t1 = t2;
+		}
+
 		LSM->update();
 		LSM->read_accelerometer(
 			&(sensorSharedMemory->imu1.ax),
@@ -76,7 +102,8 @@ int main()
 			sensorSharedMemory->imu1.mz
 		);
 	*/
-	   usleep(20000);
+		i++;
+		//usleep( (1e6 / desiredFrameRate) - 830);
 	}
 
 	delete sensorSharedMemory;
